@@ -48,7 +48,7 @@ class AccountScreen extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Authenticate()),
+                  MaterialPageRoute(builder: (context) =>const Authenticate()),
                 );
               },
             );

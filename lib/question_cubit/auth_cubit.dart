@@ -16,6 +16,12 @@ class AuthCubit extends Cubit<AuthState> {
   final SharedPreferencesManager sharedPreferencesManager =
       locator<SharedPreferencesManager>();
 
+ checkUser () {
+    final user = sharedPreferencesManager.getString("email");
+    emit(AuthState(email: user));
+   
+  }
+
   Future<String> get claims async {
     final user = sharedPreferencesManager.getString("email");
     emit(AuthState(email: user));

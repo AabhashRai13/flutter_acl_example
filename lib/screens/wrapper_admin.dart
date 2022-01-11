@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 
 import 'account/index.dart';
-import 'rbac/member.dart';
+import 'rbac/admin.dart';
 
-class MemberWrapper extends StatefulWidget {
+class AdminWrapper extends StatefulWidget {
+  const AdminWrapper({Key? key}) : super(key: key);
+
   @override
-  _MemberWrapperState createState() => _MemberWrapperState();
+  _AdminWrapperState createState() => _AdminWrapperState();
 }
 
-class _MemberWrapperState extends State<MemberWrapper> {
+class _AdminWrapperState extends State<AdminWrapper> {
   int _selectedPage = 0;
   final _pageOptions = [
-    MemberScreen(),
+  const  AdminScreen(),
     AccountScreen(),
   ];
 
@@ -28,10 +30,10 @@ class _MemberWrapperState extends State<MemberWrapper> {
           });
         },
         type: BottomNavigationBarType.fixed,
-        items: [
+        items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.verified_user),
-            label: 'Member',
+            icon: Icon(Icons.admin_panel_settings),
+            label: 'Admin',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_box),

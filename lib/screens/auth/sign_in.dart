@@ -63,7 +63,6 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
-  
   final _formKey = GlobalKey<FormState>();
   bool loading = false;
   String email = '';
@@ -73,7 +72,7 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return loading
-        ? Loading()
+        ? const Loading()
         : Container(
             padding: const EdgeInsets.all(24.0),
             child: Column(
@@ -84,7 +83,7 @@ class _SignInState extends State<SignIn> {
                       style: Theme.of(context).textTheme.headline5),
                 ),
                 const Padding(
-                  padding:  EdgeInsets.only(bottom: 12.0),
+                  padding: EdgeInsets.only(bottom: 12.0),
                   child: Text('Use your Email Address'),
                 ),
                 Form(
@@ -92,7 +91,7 @@ class _SignInState extends State<SignIn> {
                   child: Column(
                     children: [
                       TextFormField(
-                        autofillHints: [AutofillHints.email],
+                        autofillHints: const [AutofillHints.email],
                         decoration: const InputDecoration(
                           hintText: 'Email',
                           fillColor: Colors.white,
@@ -132,12 +131,7 @@ class _SignInState extends State<SignIn> {
                                 email: email,
                                 password: password,
                               );
-                              print("status $status");
-                              // dynamic status =
-                              //     await _auth.signInWithEmailAndPassword(
-                              //   email: email,
-                              //   password: password,
-                              // );
+
                               if (status != AuthResultStatus.successful) {
                                 setState(() => loading = false);
                                 final errorMsg = AuthExceptionHandler
@@ -160,14 +154,14 @@ class _SignInState extends State<SignIn> {
                     // alignment: WrapAlignment.spaceAround,
                     crossAxisAlignment: WrapCrossAlignment.center,
                     children: [
-                      Text(
+                      const Text(
                         'Don\'t have an account?',
                       ),
                       TextButton(
                         onPressed: () {
                           widget.toggleView();
                         },
-                        child: Text(
+                        child: const Text(
                           'Join Us - it\'s Free',
                         ),
                       ),
@@ -184,7 +178,7 @@ class _SignInState extends State<SignIn> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text(
+            title:const Text(
               'Sign In Failed',
               style: TextStyle(color: Colors.black),
             ),

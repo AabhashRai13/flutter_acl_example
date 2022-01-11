@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 
 import 'account/index.dart';
-import 'rbac/admin.dart';
+import 'rbac/anon.dart';
 
-class AdminWrapper extends StatefulWidget {
+class AnonWrapper extends StatefulWidget {
+  const AnonWrapper({Key? key}) : super(key: key);
+
   @override
-  _AdminWrapperState createState() => _AdminWrapperState();
+  _AnonWrapperState createState() => _AnonWrapperState();
 }
 
-class _AdminWrapperState extends State<AdminWrapper> {
+class _AnonWrapperState extends State<AnonWrapper> {
   int _selectedPage = 0;
   final _pageOptions = [
-    AdminScreen(),
+   const AnonScreen(),
     AccountScreen(),
   ];
 
@@ -28,10 +30,10 @@ class _AdminWrapperState extends State<AdminWrapper> {
           });
         },
         type: BottomNavigationBarType.fixed,
-        items: const [
+        items:const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.admin_panel_settings),
-            label: 'Admin',
+            icon: Icon(Icons.masks),
+            label: 'Anonymous',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_box),

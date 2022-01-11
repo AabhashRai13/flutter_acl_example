@@ -7,8 +7,7 @@ class SharedPreferencesManager {
   static const String email = 'email';
   static const String username = 'username';
 
-  static const String keyIsLogin = 'isLogin';
-  static const String keyUsername = 'username';
+  
 
   static Future<SharedPreferencesManager> getInstance() async {
     _instance ?? SharedPreferencesManager();

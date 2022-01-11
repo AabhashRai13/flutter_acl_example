@@ -3,7 +3,7 @@ import 'package:acl_demo/question_cubit/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
+import 'dart:developer' as log;
 import 'core/injector.dart';
 
 import 'screens/nav_wrapper.dart';
@@ -16,7 +16,7 @@ void main() async {
     await setupLocator();
     runApp(PreLauncher());
   } catch (error, stacktrace) {
-    print('$error & $stacktrace');
+    log.log('$error & $stacktrace');
   }
 }
 
@@ -34,7 +34,7 @@ class PreLauncher extends StatelessWidget {
               AuthCubit(userMail: sharedPreferencesManager.getString("email")??""),
         ),
       ],
-      child: MaterialApp(
+      child:const MaterialApp(
         title: 'RBAC',
         debugShowCheckedModeBanner: false,
         home: NavWrapper(),

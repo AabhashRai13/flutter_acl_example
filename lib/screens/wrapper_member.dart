@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 
 import 'account/index.dart';
-import 'rbac/anon.dart';
+import 'rbac/member.dart';
 
-class AnonWrapper extends StatefulWidget {
+class MemberWrapper extends StatefulWidget {
+  const MemberWrapper({Key? key}) : super(key: key);
+
   @override
-  _AnonWrapperState createState() => _AnonWrapperState();
+  _MemberWrapperState createState() => _MemberWrapperState();
 }
 
-class _AnonWrapperState extends State<AnonWrapper> {
+class _MemberWrapperState extends State<MemberWrapper> {
   int _selectedPage = 0;
   final _pageOptions = [
-    AnonScreen(),
+ const  MemberScreen(),
     AccountScreen(),
   ];
 
@@ -28,10 +30,10 @@ class _AnonWrapperState extends State<AnonWrapper> {
           });
         },
         type: BottomNavigationBarType.fixed,
-        items: [
+        items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.masks),
-            label: 'Anonymous',
+            icon: Icon(Icons.verified_user),
+            label: 'Member',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_box),

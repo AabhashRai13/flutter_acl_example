@@ -4,9 +4,9 @@ import 'package:acl_demo/question_cubit/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '_wrapper_admin.dart';
-import '_wrapper_anon.dart';
-import '_wrapper_member.dart';
+import 'wrapper_admin.dart';
+import 'wrapper_unkown.dart';
+import 'wrapper_member.dart';
 
 class NavWrapper extends StatefulWidget {
   const NavWrapper({Key? key}) : super(key: key);
@@ -18,13 +18,12 @@ class NavWrapper extends StatefulWidget {
 class _NavWrapperState extends State<NavWrapper> {
   final SharedPreferencesManager sharedPreferencesManager =
       locator<SharedPreferencesManager>();
-  _checkLogin()  {
-     BlocProvider.of<AuthCubit>(context).claims;
+  _checkLogin() {
+    BlocProvider.of<AuthCubit>(context).checkUser;
   }
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _checkLogin();
   }
@@ -35,10 +34,9 @@ class _NavWrapperState extends State<NavWrapper> {
       listener: (context, state) {},
       builder: (context, state) {
         final user = state.email;
-        print("user $user");
-        print("user ${user == ""}");
+
         if (user == "") {
-          return AnonWrapper();
+          return const AnonWrapper();
         } else {
           return const BaseWrapper();
         }
@@ -67,37 +65,17 @@ class BaseWrapper extends StatelessWidget {
           builder: (context, snapshot) {
             switch (snapshot.data) {
               case 'member':
-                return MemberWrapper();
+                return const MemberWrapper();
 
               case 'admin':
-                return AdminWrapper();
+                return const AdminWrapper();
 
               default:
-                return MemberWrapper();
+                return const MemberWrapper();
             }
           },
         );
       },
     );
-
-    // return Consumer<AuthService>(
-    //   builder: (context, auth, child) {
-    //     return FutureBuilder(
-    //       future: _getRole(),
-    //       builder: (context, snapshot) {
-    //         switch (snapshot.data) {
-    //           case 'member':
-    //             return MemberWrapper();
-
-    //           case 'admin':
-    //             return AdminWrapper();
-
-    //           default:
-    //             return MemberWrapper();
-    //         }
-    //       },
-    //     );
-    //   },
-    // );
   }
 }
